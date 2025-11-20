@@ -718,3 +718,109 @@ WARNING 2025-11-20 11:18:55,697 log Not Found: /api/p2p/orders/a6e53ef2-270e-430
 WARNING 2025-11-20 11:18:55,698 basehttp "POST /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/upload_receipt/ HTTP/1.1" 404 13121
 INFO 2025-11-20 11:19:21,658 autoreload /app/p2p/views.py changed, reloading.
 INFO 2025-11-20 11:19:22,868 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:26:37,141 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 1383
+ERROR 2025-11-20 11:27:13,183 log Internal Server Error: /api/p2p/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/upload_receipt/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/p2p/views.py", line 485, in upload_receipt
+    purchase_request.save()
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1128, in _save_table
+    values = [
+             ^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1132, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+                                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/files.py", line 98, in save
+    name = self.field.generate_filename(self.instance, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/files.py", line 353, in generate_filename
+    filename = self.upload_to(instance, filename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/p2p/models.py", line 9, in upload_to_request
+    return f'requests/{instance.purchase_request.id}/{filename}'
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PurchaseRequest' object has no attribute 'purchase_request'
+ERROR 2025-11-20 11:27:13,204 basehttp "POST /api/p2p/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/upload_receipt/ HTTP/1.1" 500 17872
+ERROR 2025-11-20 11:28:42,439 log Internal Server Error: /api/p2p/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/upload_proforma/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/p2p/views.py", line 405, in upload_proforma
+    purchase_request.save()
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1128, in _save_table
+    values = [
+             ^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 1132, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+                                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/files.py", line 98, in save
+    name = self.field.generate_filename(self.instance, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/fields/files.py", line 353, in generate_filename
+    filename = self.upload_to(instance, filename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/p2p/models.py", line 9, in upload_to_request
+    return f'requests/{instance.purchase_request.id}/{filename}'
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PurchaseRequest' object has no attribute 'purchase_request'
+ERROR 2025-11-20 11:28:42,447 basehttp "POST /api/p2p/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/upload_proforma/ HTTP/1.1" 500 17877
+INFO 2025-11-20 11:31:18,846 autoreload /app/p2p/models.py changed, reloading.
+INFO 2025-11-20 11:31:19,893 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:31:34,274 autoreload /app/p2p/models.py changed, reloading.
+INFO 2025-11-20 11:31:35,243 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:32:52,304 autoreload Watching for file changes with StatReloader

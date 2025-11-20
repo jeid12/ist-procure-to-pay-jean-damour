@@ -6,7 +6,7 @@ import uuid
 User = get_user_model()
 
 def upload_to_request(instance, filename):
-    return f'requests/{instance.purchase_request.id}/{filename}'
+    return f'requests/{instance.id}/{filename}'
 
 def upload_to_po(instance, filename):
     return f'purchase_orders/{instance.id}/{filename}'
