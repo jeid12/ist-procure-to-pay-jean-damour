@@ -4,6 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from django.db.models import Q
+from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiExample, extend_schema_view
+from drf_spectacular.types import OpenApiTypes
 from .models import PurchaseRequest, RequestItem, Approval, PurchaseOrder
 from .serializers import (
     PurchaseRequestListSerializer, PurchaseRequestDetailSerializer,
@@ -26,6 +28,110 @@ class StandardPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
+@extend_schema_view(
+    list=extend_schema(
+        description="List purchase requests (filtered by user role)",
+        parameters=[
+            OpenApiParameter(name='status', type=OpenApiTypes.STR, description='Filter by status', 
+                           enum=['PENDING', 'APPROVED_LEVEL_1', 'APPROVED_LEVEL_2', 'APPROVED', 'REJECTED']),
+            OpenApiParameter(name='search', type=OpenApiTypes.STR, description='Search in title and description'),
+            OpenApiParameter(name='page', type=OpenApiTypes.INT, description='Page number'),
+            OpenApiParameter(name='page_size', type=OpenApiTypes.INT, description='Items per page (max 100)'),
+        ]
+    ),
+    retrieve=extend_schema(
+        description="Get detailed information about a specific purchase request"
+    ),
+    create=extend_schema(
+        description="Create a new purchase request (staff only)",
+        request=PurchaseRequestCreateSerializer,
+        responses={
+            201: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseRequestDetailSerializer
+                }
+            },
+            400: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'errors': {'type': 'object'}
+                }
+            }
+        },
+        examples=[
+            OpenApiExample(
+                'Create Request Example',
+                value={
+                    'title': 'Office Supplies',
+                    'description': 'Purchase of printer paper and pens',
+                    'amount': 150.00,
+                    'items': [
+                        {
+                            'item_name': 'Printer Paper A4',
+                            'description': 'White 80gsm',
+                            'quantity': 10,
+                            'unit_price': 5.00
+                        },
+                        {
+                            'item_name': 'Blue Pens',
+                            'description': 'Ballpoint pens',
+                            'quantity': 50,
+                            'unit_price': 2.00
+                        }
+                    ]
+                },
+                request_only=True
+            )
+        ]
+    ),
+    update=extend_schema(
+        description="Update a purchase request (only PENDING or REJECTED status, own requests)",
+        request=PurchaseRequestCreateSerializer,
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseRequestDetailSerializer
+                }
+            },
+            400: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'errors': {'type': 'object'}
+                }
+            }
+        }
+    ),
+    partial_update=extend_schema(
+        description="Partially update a purchase request",
+        request=PurchaseRequestCreateSerializer,
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseRequestDetailSerializer
+                }
+            }
+        }
+    ),
+    destroy=extend_schema(
+        description="Delete a purchase request (only PENDING or REJECTED status)",
+        responses={
+            204: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'}
+                }
+            }
+        }
+    )
+)
 class PurchaseRequestViewSet(viewsets.ModelViewSet):
     """
     ViewSet for Purchase Requests with role-based access control
@@ -87,9 +193,79 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
         
         return queryset
     
-    def perform_create(self, serializer):
-        serializer.save(requester=self.request.user)
+    def create(self, request, *args, **kwargs):
+        """Create a new purchase request"""
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            # Use detail serializer to include all fields including id
+            instance = serializer.instance
+            detail_serializer = PurchaseRequestDetailSerializer(instance)
+            headers = self.get_success_headers(serializer.data)
+            return Response({
+                'message': 'Purchase request created successfully',
+                'data': detail_serializer.data
+            }, status=status.HTTP_201_CREATED, headers=headers)
+        return Response({
+            'message': 'Purchase request creation failed',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
     
+    def update(self, request, *args, **kwargs):
+        """Update a purchase request"""
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        if serializer.is_valid():
+            self.perform_update(serializer)
+            return Response({
+                'message': 'Purchase request updated successfully',
+                'data': serializer.data
+            }, status=status.HTTP_200_OK)
+        return Response({
+            'message': 'Purchase request update failed',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    def destroy(self, request, *args, **kwargs):
+        """Delete a purchase request"""
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({
+            'message': 'Purchase request deleted successfully'
+        }, status=status.HTTP_204_NO_CONTENT)
+    
+    def perform_create(self, serializer):
+        # Don't pass requester here - it's handled in the serializer's create method
+        serializer.save()
+    
+    @extend_schema(
+        description="Approve a purchase request (approvers only)",
+        request=ApprovalActionSerializer,
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseRequestDetailSerializer
+                }
+            },
+            400: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'error': {'type': 'string'}
+                }
+            }
+        },
+        examples=[
+            OpenApiExample(
+                'Approve Example',
+                value={'comments': 'Approved - budget available'},
+                request_only=True
+            )
+        ]
+    )
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated, IsAnyApprover])
     def approve(self, request, pk=None):
         """Approve a purchase request"""
@@ -104,17 +280,47 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
                     serializer.validated_data.get('comments', '')
                 )
                 purchase_request.refresh_from_db()
-                return Response(
-                    PurchaseRequestDetailSerializer(purchase_request).data,
-                    status=status.HTTP_200_OK
-                )
+                return Response({
+                    'message': 'Purchase request approved successfully',
+                    'data': PurchaseRequestDetailSerializer(purchase_request).data
+                }, status=status.HTTP_200_OK)
             except ValueError as e:
-                return Response(
-                    {'error': str(e)},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response({
+                    'message': 'Approval failed',
+                    'error': str(e)
+                }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'message': 'Validation failed',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
     
+    @extend_schema(
+        description="Reject a purchase request (approvers only)",
+        request=ApprovalActionSerializer,
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseRequestDetailSerializer
+                }
+            },
+            400: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'error': {'type': 'string'}
+                }
+            }
+        },
+        examples=[
+            OpenApiExample(
+                'Reject Example',
+                value={'comments': 'Rejected - insufficient budget justification'},
+                request_only=True
+            )
+        ]
+    )
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated, IsAnyApprover])
     def reject(self, request, pk=None):
         """Reject a purchase request"""
@@ -129,17 +335,58 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
                     serializer.validated_data.get('comments', '')
                 )
                 purchase_request.refresh_from_db()
-                return Response(
-                    PurchaseRequestDetailSerializer(purchase_request).data,
-                    status=status.HTTP_200_OK
-                )
+                return Response({
+                    'message': 'Purchase request rejected successfully',
+                    'data': PurchaseRequestDetailSerializer(purchase_request).data
+                }, status=status.HTTP_200_OK)
             except ValueError as e:
-                return Response(
-                    {'error': str(e)},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response({
+                    'message': 'Rejection failed',
+                    'error': str(e)
+                }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'message': 'Validation failed',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
     
+    @extend_schema(
+        description="Upload proforma invoice (staff - own requests only)",
+        request={
+            'multipart/form-data': {
+                'type': 'object',
+                'properties': {
+                    'file': {
+                        'type': 'string',
+                        'format': 'binary',
+                        'description': 'Proforma invoice file (PDF or image, max 10MB)'
+                    }
+                }
+            }
+        },
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseRequestDetailSerializer
+                }
+            },
+            400: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'errors': {'type': 'object'}
+                }
+            },
+            403: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'error': {'type': 'string'}
+                }
+            }
+        }
+    )
     @action(detail=True, methods=['post'])
     def upload_proforma(self, request, pk=None):
         """Upload proforma invoice"""
@@ -147,10 +394,10 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
         
         # Check permissions
         if request.user.role != 'staff' or purchase_request.requester != request.user:
-            return Response(
-                {'error': 'You do not have permission to upload files for this request'},
-                status=status.HTTP_403_FORBIDDEN
-            )
+            return Response({
+                'message': 'Permission denied',
+                'error': 'You do not have permission to upload files for this request'
+            }, status=status.HTTP_403_FORBIDDEN)
         
         serializer = FileUploadSerializer(data=request.data)
         if serializer.is_valid():
@@ -166,12 +413,54 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
             except Exception as e:
                 logger.error(f"Failed to extract proforma data: {str(e)}")
             
-            return Response(
-                PurchaseRequestDetailSerializer(purchase_request).data,
-                status=status.HTTP_200_OK
-            )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'message': 'Proforma invoice uploaded successfully',
+                'data': PurchaseRequestDetailSerializer(purchase_request).data
+            }, status=status.HTTP_200_OK)
+        return Response({
+            'message': 'File upload failed',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
     
+    @extend_schema(
+        description="Upload receipt (staff - own requests, finance - all approved requests)",
+        request={
+            'multipart/form-data': {
+                'type': 'object',
+                'properties': {
+                    'file': {
+                        'type': 'string',
+                        'format': 'binary',
+                        'description': 'Receipt file (PDF or image, max 10MB)'
+                    }
+                }
+            }
+        },
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseRequestDetailSerializer,
+                    'receipt_validation': {'type': 'object'}
+                }
+            },
+            400: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'errors': {'type': 'object'}
+                }
+            },
+            403: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'error': {'type': 'string'}
+                }
+            }
+        }
+    )
     @action(detail=True, methods=['post'])
     def upload_receipt(self, request, pk=None):
         """Upload receipt (staff or finance can upload)"""
@@ -179,16 +468,16 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
         
         # Check permissions
         if request.user.role not in ['staff', 'finance']:
-            return Response(
-                {'error': 'You do not have permission to upload receipts'},
-                status=status.HTTP_403_FORBIDDEN
-            )
+            return Response({
+                'message': 'Permission denied',
+                'error': 'You do not have permission to upload receipts'
+            }, status=status.HTTP_403_FORBIDDEN)
         
         if request.user.role == 'staff' and purchase_request.requester != request.user:
-            return Response(
-                {'error': 'You can only upload receipts for your own requests'},
-                status=status.HTTP_403_FORBIDDEN
-            )
+            return Response({
+                'message': 'Permission denied',
+                'error': 'You can only upload receipts for your own requests'
+            }, status=status.HTTP_403_FORBIDDEN)
         
         serializer = FileUploadSerializer(data=request.data)
         if serializer.is_valid():
@@ -207,21 +496,47 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
                 except Exception as e:
                     logger.error(f"Failed to validate receipt: {str(e)}")
             
-            response_data = PurchaseRequestDetailSerializer(purchase_request).data
+            response_data = {
+                'message': 'Receipt uploaded successfully',
+                'data': PurchaseRequestDetailSerializer(purchase_request).data
+            }
             if validation_result:
                 response_data['receipt_validation'] = validation_result
             
             return Response(response_data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'message': 'File upload failed',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
     
+    @extend_schema(
+        description="Get current user's purchase requests (staff only)",
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'count': {'type': 'integer'},
+                    'data': {'type': 'array', 'items': PurchaseRequestListSerializer}
+                }
+            },
+            403: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'error': {'type': 'string'}
+                }
+            }
+        }
+    )
     @action(detail=False, methods=['get'])
     def my_requests(self, request):
         """Get current user's requests (for staff)"""
         if request.user.role != 'staff':
-            return Response(
-                {'error': 'This endpoint is only for staff users'},
-                status=status.HTTP_403_FORBIDDEN
-            )
+            return Response({
+                'message': 'Access denied',
+                'error': 'This endpoint is only for staff users'
+            }, status=status.HTTP_403_FORBIDDEN)
         
         queryset = self.get_queryset()
         page = self.paginate_queryset(queryset)
@@ -230,8 +545,16 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
             return self.get_paginated_response(serializer.data)
         
         serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+        return Response({
+            'message': 'Requests retrieved successfully',
+            'count': queryset.count(),
+            'data': serializer.data
+        }, status=status.HTTP_200_OK)
     
+    @extend_schema(
+        description="Get pending purchase requests for approval (approvers only)",
+        responses={200: PurchaseRequestListSerializer(many=True)}
+    )
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated, IsAnyApprover])
     def pending(self, request):
         """Get pending requests for approvers"""
@@ -244,6 +567,20 @@ class PurchaseRequestViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+@extend_schema_view(
+    list=extend_schema(
+        description="List purchase orders (role-based filtering)",
+        parameters=[
+            OpenApiParameter(name='status', type=OpenApiTypes.STR, description='Filter by status',
+                           enum=['GENERATED', 'SENT', 'COMPLETED', 'CANCELLED']),
+            OpenApiParameter(name='page', type=OpenApiTypes.INT, description='Page number'),
+            OpenApiParameter(name='page_size', type=OpenApiTypes.INT, description='Items per page (max 100)'),
+        ]
+    ),
+    retrieve=extend_schema(
+        description="Get detailed information about a specific purchase order"
+    )
+)
 class PurchaseOrderViewSet(viewsets.ReadOnlyModelViewSet):
     """
     ViewSet for Purchase Orders (read-only)
@@ -280,6 +617,45 @@ class PurchaseOrderViewSet(viewsets.ReadOnlyModelViewSet):
         
         return queryset
     
+    @extend_schema(
+        description="Update purchase order status (finance only)",
+        request={
+            'application/json': {
+                'type': 'object',
+                'properties': {
+                    'status': {
+                        'type': 'string',
+                        'enum': ['GENERATED', 'SENT', 'COMPLETED', 'CANCELLED'],
+                        'description': 'New status for the purchase order'
+                    }
+                },
+                'required': ['status']
+            }
+        },
+        responses={
+            200: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'data': PurchaseOrderSerializer
+                }
+            },
+            400: {
+                'type': 'object',
+                'properties': {
+                    'message': {'type': 'string'},
+                    'error': {'type': 'string'}
+                }
+            }
+        },
+        examples=[
+            OpenApiExample(
+                'Update Status Example',
+                value={'status': 'SENT'},
+                request_only=True
+            )
+        ]
+    )
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated, IsFinance])
     def update_status(self, request, pk=None):
         """Update PO status (finance only)"""
@@ -287,15 +663,15 @@ class PurchaseOrderViewSet(viewsets.ReadOnlyModelViewSet):
         new_status = request.data.get('status')
         
         if new_status not in dict(PurchaseOrder.STATUS_CHOICES).keys():
-            return Response(
-                {'error': 'Invalid status'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+            return Response({
+                'message': 'Invalid status',
+                'error': f'Status must be one of: {", ".join(dict(PurchaseOrder.STATUS_CHOICES).keys())}'
+            }, status=status.HTTP_400_BAD_REQUEST)
         
         po.status = new_status
         po.save()
         
-        return Response(
-            self.get_serializer(po).data,
-            status=status.HTTP_200_OK
-        )
+        return Response({
+            'message': 'Purchase order status updated successfully',
+            'data': self.get_serializer(po).data
+        }, status=status.HTTP_200_OK)

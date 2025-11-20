@@ -5,3 +5,716 @@ WARNING 2025-11-20 10:21:00,795 log Not Found: /favicon.ico
 WARNING 2025-11-20 10:21:00,797 basehttp "GET /favicon.ico HTTP/1.1" 404 3355
 INFO 2025-11-20 10:21:10,756 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
 INFO 2025-11-20 10:21:10,941 basehttp "GET /api/schema/ HTTP/1.1" 200 71370
+INFO 2025-11-20 10:32:25,611 basehttp "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-20 10:32:25,624 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-20 10:32:25,666 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4170
+INFO 2025-11-20 10:32:25,723 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-11-20 10:32:25,723 basehttp "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-11-20 10:32:25,724 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-11-20 10:32:25,726 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-11-20 10:32:25,726 basehttp "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-11-20 10:32:25,726 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-11-20 10:32:25,739 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-11-20 10:32:42,362 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-20 10:32:42,391 basehttp "GET /admin/ HTTP/1.1" 200 9488
+INFO 2025-11-20 10:32:42,422 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-11-20 10:32:42,484 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-11-20 10:32:42,487 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-11-20 10:35:57,928 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 10:35:58,926 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:36:01,600 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 10:36:02,788 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:37:47,244 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 10:37:48,294 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:38:20,057 autoreload /app/users/serializers.py changed, reloading.
+INFO 2025-11-20 10:38:20,904 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:38:29,540 autoreload /app/users/serializers.py changed, reloading.
+INFO 2025-11-20 10:38:30,439 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:41:10,522 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:43:29,205 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 10:43:30,325 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:43:32,191 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 10:43:33,114 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:43:50,159 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:44:23,579 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+INFO 2025-11-20 10:44:26,781 basehttp "GET /admin/ HTTP/1.1" 200 9488
+INFO 2025-11-20 10:44:26,832 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,843 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,849 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,854 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,860 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,866 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,893 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,946 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:26,947 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-11-20 10:44:41,652 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 10:44:42,244 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 10:44:42,247 basehttp "GET /api/schema/ HTTP/1.1" 500 333225
+ERROR 2025-11-20 10:44:42,687 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 10:44:42,690 basehttp "GET /api/schema/ HTTP/1.1" 500 333225
+INFO 2025-11-20 10:44:48,410 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 10:45:06,263 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/drf_spectacular/renderers.py", line 67, in render
+    return dump(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/__init__.py", line 253, in dump
+    return dump_all([data], stream, Dumper=Dumper, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/__init__.py", line 241, in dump_all
+    dumper.represent(data)
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 27, in represent
+    node = self.represent_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 58, in represent_data
+    node = self.yaml_representers[None](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 231, in represent_undefined
+    raise RepresenterError("cannot represent an object", data)
+yaml.representer.RepresenterError: ('cannot represent an object', <class 'users.serializers.UserSerializer'>)
+ERROR 2025-11-20 10:45:06,266 basehttp "GET /api/schema/ HTTP/1.1" 500 353236
+INFO 2025-11-20 10:45:19,557 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 10:45:20,044 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 10:45:20,047 basehttp "GET /api/schema/ HTTP/1.1" 500 338865
+ERROR 2025-11-20 10:45:20,496 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 10:45:20,499 basehttp "GET /api/schema/ HTTP/1.1" 500 333225
+INFO 2025-11-20 10:45:36,371 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 10:45:37,322 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:45:46,431 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 10:45:47,387 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:45:53,178 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:46:01,883 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+INFO 2025-11-20 10:46:13,650 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+INFO 2025-11-20 10:46:13,831 basehttp "GET /api/schema/ HTTP/1.1" 200 78790
+WARNING 2025-11-20 10:46:41,853 log Unauthorized: /api/auth/
+WARNING 2025-11-20 10:46:41,854 basehttp "GET /api/auth/?page=1 HTTP/1.1" 401 58
+INFO 2025-11-20 10:47:09,159 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:47:35,513 basehttp "GET /api/auth/?page=1 HTTP/1.1" 200 264
+WARNING 2025-11-20 10:47:48,346 log Not Found: /api/auth/
+WARNING 2025-11-20 10:47:48,347 basehttp "GET /api/auth/?page=5 HTTP/1.1" 404 26
+INFO 2025-11-20 10:49:02,461 basehttp "GET /api/p2p/orders/?page=1&page_size=50&status=SENT HTTP/1.1" 200 52
+ERROR 2025-11-20 10:50:04,708 log Internal Server Error: /api/p2p/requests/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/drf_spectacular/drainage.py", line 207, in wrapped_method
+    return method(self, request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/p2p/views.py", line 151, in perform_create
+    serializer.save(requester=self.request.user)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/p2p/serializers.py", line 117, in create
+    purchase_request = PurchaseRequest.objects.create(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: django.db.models.query.QuerySet.create() got multiple values for keyword argument 'requester'
+ERROR 2025-11-20 10:50:04,724 basehttp "POST /api/p2p/requests/ HTTP/1.1" 500 16932
+INFO 2025-11-20 10:54:17,443 basehttp "POST /api/auth/register/ HTTP/1.1" 201 714
+INFO 2025-11-20 10:54:17,646 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:54:17,816 basehttp "POST /api/auth/login/ HTTP/1.1" 200 728
+INFO 2025-11-20 10:54:18,023 basehttp "POST /api/auth/login/ HTTP/1.1" 200 730
+INFO 2025-11-20 10:54:18,235 basehttp "POST /api/auth/login/ HTTP/1.1" 200 725
+INFO 2025-11-20 10:54:18,444 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:54:18,509 basehttp "POST /api/auth/token/refresh/ HTTP/1.1" 200 489
+WARNING 2025-11-20 10:54:18,572 log Not Found: /api/auth/current-user/
+WARNING 2025-11-20 10:54:18,573 basehttp "GET /api/auth/current-user/ HTTP/1.1" 404 23
+WARNING 2025-11-20 10:54:18,649 log Not Found: /api/auth/users/
+WARNING 2025-11-20 10:54:18,651 basehttp "GET /api/auth/users/ HTTP/1.1" 404 23
+WARNING 2025-11-20 10:54:18,705 log Not Found: /api/auth/users/
+WARNING 2025-11-20 10:54:18,705 basehttp "GET /api/auth/users/?role=staff HTTP/1.1" 404 23
+ERROR 2025-11-20 10:54:18,829 log Internal Server Error: /api/p2p/requests/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/drf_spectacular/drainage.py", line 207, in wrapped_method
+    return method(self, request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/p2p/views.py", line 151, in perform_create
+    serializer.save(requester=self.request.user)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/p2p/serializers.py", line 117, in create
+    purchase_request = PurchaseRequest.objects.create(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: django.db.models.query.QuerySet.create() got multiple values for keyword argument 'requester'
+ERROR 2025-11-20 10:54:18,837 basehttp "POST /api/p2p/requests/ HTTP/1.1" 500 111862
+INFO 2025-11-20 10:54:18,869 basehttp "GET /api/p2p/requests/ HTTP/1.1" 200 1021
+INFO 2025-11-20 10:54:18,949 basehttp "GET /api/p2p/requests/?status=PENDING HTTP/1.1" 200 1021
+INFO 2025-11-20 10:54:19,026 basehttp "GET /api/p2p/requests/?search=Office HTTP/1.1" 200 561
+INFO 2025-11-20 10:54:19,107 basehttp "GET /api/p2p/requests/my_requests/ HTTP/1.1" 200 2715
+INFO 2025-11-20 10:54:19,152 basehttp "GET /api/p2p/requests/pending/ HTTP/1.1" 200 5382
+INFO 2025-11-20 10:54:19,186 basehttp "GET /api/p2p/requests/pending/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:54:19,251 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:54:19,320 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+ERROR 2025-11-20 10:54:19,459 log Internal Server Error: /api/p2p/requests/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/drf_spectacular/drainage.py", line 207, in wrapped_method
+    return method(self, request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/app/p2p/views.py", line 151, in perform_create
+    serializer.save(requester=self.request.user)
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/p2p/serializers.py", line 117, in create
+    purchase_request = PurchaseRequest.objects.create(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: django.db.models.query.QuerySet.create() got multiple values for keyword argument 'requester'
+ERROR 2025-11-20 10:54:19,470 basehttp "POST /api/p2p/requests/ HTTP/1.1" 500 110895
+INFO 2025-11-20 10:55:28,434 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 10:55:29,399 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:56:01,201 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 10:56:02,194 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 10:56:27,736 autoreload Watching for file changes with StatReloader
+WARNING 2025-11-20 10:56:43,334 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 10:56:43,335 basehttp "POST /api/auth/register/ HTTP/1.1" 400 50
+INFO 2025-11-20 10:56:43,502 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:56:43,710 basehttp "POST /api/auth/login/ HTTP/1.1" 200 728
+INFO 2025-11-20 10:56:43,940 basehttp "POST /api/auth/login/ HTTP/1.1" 200 730
+INFO 2025-11-20 10:56:44,150 basehttp "POST /api/auth/login/ HTTP/1.1" 200 725
+INFO 2025-11-20 10:56:44,354 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:56:44,423 basehttp "POST /api/auth/token/refresh/ HTTP/1.1" 200 489
+INFO 2025-11-20 10:56:44,493 basehttp "GET /api/auth/me/ HTTP/1.1" 200 212
+INFO 2025-11-20 10:56:44,571 basehttp "GET /api/auth/ HTTP/1.1" 200 264
+INFO 2025-11-20 10:56:44,641 basehttp "GET /api/auth/?role=staff HTTP/1.1" 200 264
+INFO 2025-11-20 10:56:44,756 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 482
+INFO 2025-11-20 10:56:44,835 basehttp "GET /api/p2p/requests/ HTTP/1.1" 200 1490
+INFO 2025-11-20 10:56:44,869 basehttp "GET /api/p2p/requests/?status=PENDING HTTP/1.1" 200 1490
+INFO 2025-11-20 10:56:44,898 basehttp "GET /api/p2p/requests/?search=Office HTTP/1.1" 200 1030
+INFO 2025-11-20 10:56:44,976 basehttp "GET /api/p2p/requests/my_requests/ HTTP/1.1" 200 4073
+INFO 2025-11-20 10:56:45,016 basehttp "GET /api/p2p/requests/pending/ HTTP/1.1" 200 6740
+INFO 2025-11-20 10:56:45,047 basehttp "GET /api/p2p/requests/pending/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:56:45,112 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:56:45,178 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:56:45,291 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 293
+INFO 2025-11-20 10:57:39,261 basehttp "POST /api/auth/register/ HTTP/1.1" 201 725
+INFO 2025-11-20 10:57:39,428 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:57:39,637 basehttp "POST /api/auth/login/ HTTP/1.1" 200 728
+INFO 2025-11-20 10:57:39,843 basehttp "POST /api/auth/login/ HTTP/1.1" 200 730
+INFO 2025-11-20 10:57:40,047 basehttp "POST /api/auth/login/ HTTP/1.1" 200 725
+INFO 2025-11-20 10:57:40,257 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:57:40,329 basehttp "POST /api/auth/token/refresh/ HTTP/1.1" 200 489
+INFO 2025-11-20 10:57:40,402 basehttp "GET /api/auth/me/ HTTP/1.1" 200 212
+INFO 2025-11-20 10:57:40,468 basehttp "GET /api/auth/ HTTP/1.1" 200 264
+INFO 2025-11-20 10:57:40,546 basehttp "GET /api/auth/?role=staff HTTP/1.1" 200 264
+INFO 2025-11-20 10:57:40,658 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 482
+INFO 2025-11-20 10:57:40,740 basehttp "GET /api/p2p/requests/ HTTP/1.1" 200 2417
+INFO 2025-11-20 10:57:40,778 basehttp "GET /api/p2p/requests/?status=PENDING HTTP/1.1" 200 2417
+INFO 2025-11-20 10:57:40,815 basehttp "GET /api/p2p/requests/?search=Office HTTP/1.1" 200 1499
+INFO 2025-11-20 10:57:40,852 basehttp "GET /api/p2p/requests/my_requests/ HTTP/1.1" 200 6600
+INFO 2025-11-20 10:57:40,899 basehttp "GET /api/p2p/requests/pending/ HTTP/1.1" 200 9267
+INFO 2025-11-20 10:57:40,939 basehttp "GET /api/p2p/requests/pending/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:57:41,004 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:57:41,085 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:57:41,207 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 293
+INFO 2025-11-20 10:58:23,155 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:58:23,430 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 272
+INFO 2025-11-20 10:58:23,842 basehttp "POST /api/auth/login/ HTTP/1.1" 200 728
+WARNING 2025-11-20 10:58:23,916 log Not Found: /api/p2p/requests//approve/
+WARNING 2025-11-20 10:58:23,917 basehttp "POST /api/p2p/requests//approve/ HTTP/1.1" 404 12998
+INFO 2025-11-20 10:58:24,471 basehttp "POST /api/auth/login/ HTTP/1.1" 200 730
+WARNING 2025-11-20 10:58:24,550 log Not Found: /api/p2p/requests//approve/
+WARNING 2025-11-20 10:58:24,551 basehttp "POST /api/p2p/requests//approve/ HTTP/1.1" 404 12998
+INFO 2025-11-20 10:58:25,040 basehttp "POST /api/auth/login/ HTTP/1.1" 200 725
+INFO 2025-11-20 10:58:25,114 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 10:59:01,572 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 10:59:01,738 basehttp "POST /api/auth/login/ HTTP/1.1" 200 728
+INFO 2025-11-20 10:59:01,937 basehttp "POST /api/auth/login/ HTTP/1.1" 200 730
+INFO 2025-11-20 10:59:03,846 basehttp "POST /api/auth/login/ HTTP/1.1" 200 725
+INFO 2025-11-20 10:59:39,601 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 449
+INFO 2025-11-20 11:00:53,488 basehttp "GET /api/p2p/requests/my_requests/?page=1&page_size=5 HTTP/1.1" 200 6288
+INFO 2025-11-20 11:01:30,311 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 11:01:30,562 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 242
+INFO 2025-11-20 11:01:30,897 basehttp "POST /api/auth/login/ HTTP/1.1" 200 728
+WARNING 2025-11-20 11:01:30,935 log Not Found: /api/p2p/requests//approve/
+WARNING 2025-11-20 11:01:30,935 basehttp "POST /api/p2p/requests//approve/ HTTP/1.1" 404 12998
+INFO 2025-11-20 11:01:31,488 basehttp "POST /api/auth/login/ HTTP/1.1" 200 730
+WARNING 2025-11-20 11:01:31,525 log Not Found: /api/p2p/requests//approve/
+WARNING 2025-11-20 11:01:31,526 basehttp "POST /api/p2p/requests//approve/ HTTP/1.1" 404 12998
+INFO 2025-11-20 11:01:32,132 basehttp "POST /api/auth/login/ HTTP/1.1" 200 725
+INFO 2025-11-20 11:01:32,208 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 11:02:08,973 basehttp "POST /api/auth/login/ HTTP/1.1" 200 709
+INFO 2025-11-20 11:02:09,198 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 239
+INFO 2025-11-20 11:05:04,879 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:05:06,252 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:05:13,448 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:05:14,469 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:05:16,318 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 11:05:17,297 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:05:27,814 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 11:05:28,788 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:05:40,272 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 11:05:41,216 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:05:50,415 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:05:51,444 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:06:03,782 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:06:04,816 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:06:19,419 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:06:20,714 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:06:30,125 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:06:31,178 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:06:41,551 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:06:42,570 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:07:01,389 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:07:02,429 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:07:21,282 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:07:22,257 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:07:32,617 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:07:33,537 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:07:41,562 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:07:42,538 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:07:50,653 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:07:51,559 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:08:02,545 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:08:03,365 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:08:14,739 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:08:15,610 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:08:23,846 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:08:24,810 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:08:30,848 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:08:31,910 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:08:43,247 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:08:44,110 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:08:55,539 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 11:08:56,562 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:09:09,073 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 11:09:09,956 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:09:42,428 autoreload /app/users/views.py changed, reloading.
+INFO 2025-11-20 11:09:43,381 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:11:07,408 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:15:26,067 basehttp "POST /api/auth/register/ HTTP/1.1" 201 762
+WARNING 2025-11-20 11:15:26,079 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:15:26,080 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+WARNING 2025-11-20 11:15:26,093 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:15:26,093 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+WARNING 2025-11-20 11:15:26,108 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:15:26,109 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:15:26,283 basehttp "POST /api/auth/login/ HTTP/1.1" 200 750
+INFO 2025-11-20 11:15:26,294 basehttp "GET /api/auth/me/ HTTP/1.1" 200 222
+INFO 2025-11-20 11:15:26,312 basehttp "GET /api/auth/ HTTP/1.1" 200 274
+WARNING 2025-11-20 11:15:26,322 log Bad Request: /api/p2p/requests/
+WARNING 2025-11-20 11:15:26,323 basehttp "POST /api/p2p/requests/ HTTP/1.1" 400 188
+INFO 2025-11-20 11:15:26,337 basehttp "GET /api/p2p/requests/ HTTP/1.1" 200 52
+WARNING 2025-11-20 11:15:26,347 log Not Found: /api/p2p/requests/None/
+WARNING 2025-11-20 11:15:26,347 basehttp "GET /api/p2p/requests/None/ HTTP/1.1" 404 23
+WARNING 2025-11-20 11:15:26,360 log Not Found: /api/p2p/requests/None/
+WARNING 2025-11-20 11:15:26,361 basehttp "PATCH /api/p2p/requests/None/ HTTP/1.1" 404 23
+INFO 2025-11-20 11:15:26,372 basehttp "GET /api/p2p/requests/my_requests/ HTTP/1.1" 200 52
+WARNING 2025-11-20 11:15:26,380 log Not Found: /api/p2p/requests/None/submit/
+WARNING 2025-11-20 11:15:26,381 basehttp "POST /api/p2p/requests/None/submit/ HTTP/1.1" 404 13007
+WARNING 2025-11-20 11:17:07,818 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:17:07,819 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:17:07,981 basehttp "POST /api/auth/register/ HTTP/1.1" 201 782
+INFO 2025-11-20 11:17:08,145 basehttp "POST /api/auth/register/ HTTP/1.1" 201 782
+INFO 2025-11-20 11:17:08,312 basehttp "POST /api/auth/register/ HTTP/1.1" 201 770
+INFO 2025-11-20 11:17:08,470 basehttp "POST /api/auth/login/ HTTP/1.1" 200 750
+WARNING 2025-11-20 11:17:58,330 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:17:58,331 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:17:58,496 basehttp "POST /api/auth/login/ HTTP/1.1" 200 750
+WARNING 2025-11-20 11:17:58,509 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:17:58,510 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:17:58,678 basehttp "POST /api/auth/login/ HTTP/1.1" 200 770
+WARNING 2025-11-20 11:17:58,690 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:17:58,691 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:17:58,855 basehttp "POST /api/auth/login/ HTTP/1.1" 200 770
+WARNING 2025-11-20 11:17:58,867 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:17:58,868 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:17:59,030 basehttp "POST /api/auth/login/ HTTP/1.1" 200 758
+INFO 2025-11-20 11:17:59,190 basehttp "POST /api/auth/login/ HTTP/1.1" 200 750
+INFO 2025-11-20 11:17:59,200 basehttp "GET /api/auth/me/ HTTP/1.1" 200 222
+INFO 2025-11-20 11:17:59,220 basehttp "GET /api/auth/ HTTP/1.1" 200 274
+INFO 2025-11-20 11:17:59,252 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 573
+INFO 2025-11-20 11:17:59,275 basehttp "GET /api/p2p/requests/ HTTP/1.1" 200 539
+WARNING 2025-11-20 11:17:59,287 log Not Found: /api/p2p/requests/None/
+WARNING 2025-11-20 11:17:59,288 basehttp "GET /api/p2p/requests/None/ HTTP/1.1" 404 23
+WARNING 2025-11-20 11:17:59,298 log Not Found: /api/p2p/requests/None/
+WARNING 2025-11-20 11:17:59,298 basehttp "PATCH /api/p2p/requests/None/ HTTP/1.1" 404 23
+INFO 2025-11-20 11:17:59,318 basehttp "GET /api/p2p/requests/my_requests/ HTTP/1.1" 200 1452
+WARNING 2025-11-20 11:17:59,326 log Not Found: /api/p2p/requests/None/submit/
+WARNING 2025-11-20 11:17:59,327 basehttp "POST /api/p2p/requests/None/submit/ HTTP/1.1" 404 13007
+WARNING 2025-11-20 11:17:59,339 log Not Found: /api/p2p/requests/None/approve/
+WARNING 2025-11-20 11:17:59,340 basehttp "POST /api/p2p/requests/None/approve/ HTTP/1.1" 404 23
+WARNING 2025-11-20 11:17:59,350 log Not Found: /api/p2p/requests/None/approve/
+WARNING 2025-11-20 11:17:59,351 basehttp "POST /api/p2p/requests/None/approve/ HTTP/1.1" 404 23
+INFO 2025-11-20 11:17:59,366 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 52
+INFO 2025-11-20 11:18:23,794 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:18:24,994 autoreload Watching for file changes with StatReloader
+WARNING 2025-11-20 11:18:54,540 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:18:54,541 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:18:54,711 basehttp "POST /api/auth/login/ HTTP/1.1" 200 750
+WARNING 2025-11-20 11:18:54,722 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:18:54,723 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:18:54,890 basehttp "POST /api/auth/login/ HTTP/1.1" 200 770
+WARNING 2025-11-20 11:18:54,901 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:18:54,901 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:18:55,057 basehttp "POST /api/auth/login/ HTTP/1.1" 200 770
+WARNING 2025-11-20 11:18:55,070 log Bad Request: /api/auth/register/
+WARNING 2025-11-20 11:18:55,071 basehttp "POST /api/auth/register/ HTTP/1.1" 400 93
+INFO 2025-11-20 11:18:55,230 basehttp "POST /api/auth/login/ HTTP/1.1" 200 758
+INFO 2025-11-20 11:18:55,383 basehttp "POST /api/auth/login/ HTTP/1.1" 200 750
+INFO 2025-11-20 11:18:55,394 basehttp "GET /api/auth/me/ HTTP/1.1" 200 222
+INFO 2025-11-20 11:18:55,418 basehttp "GET /api/auth/ HTTP/1.1" 200 274
+INFO 2025-11-20 11:18:55,452 basehttp "POST /api/p2p/requests/ HTTP/1.1" 201 1459
+INFO 2025-11-20 11:18:55,475 basehttp "GET /api/p2p/requests/ HTTP/1.1" 200 1027
+INFO 2025-11-20 11:18:55,495 basehttp "GET /api/p2p/requests/40604507-8f85-4469-8474-df7ec84a2b25/ HTTP/1.1" 200 1400
+INFO 2025-11-20 11:18:55,520 basehttp "PATCH /api/p2p/requests/40604507-8f85-4469-8474-df7ec84a2b25/ HTTP/1.1" 200 1466
+INFO 2025-11-20 11:18:55,543 basehttp "GET /api/p2p/requests/my_requests/ HTTP/1.1" 200 2860
+WARNING 2025-11-20 11:18:55,551 log Not Found: /api/p2p/requests/40604507-8f85-4469-8474-df7ec84a2b25/submit/
+WARNING 2025-11-20 11:18:55,552 basehttp "POST /api/p2p/requests/40604507-8f85-4469-8474-df7ec84a2b25/submit/ HTTP/1.1" 404 13103
+INFO 2025-11-20 11:18:55,583 basehttp "POST /api/p2p/requests/40604507-8f85-4469-8474-df7ec84a2b25/approve/ HTTP/1.1" 200 1645
+INFO 2025-11-20 11:18:55,621 services Generated PO document for PO-20251120-0001
+INFO 2025-11-20 11:18:55,631 basehttp "POST /api/p2p/requests/40604507-8f85-4469-8474-df7ec84a2b25/approve/ HTTP/1.1" 200 1789
+INFO 2025-11-20 11:18:55,651 basehttp "GET /api/p2p/orders/ HTTP/1.1" 200 1250
+INFO 2025-11-20 11:18:55,669 basehttp "GET /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/ HTTP/1.1" 200 1198
+WARNING 2025-11-20 11:18:55,676 log Not Found: /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/upload_proforma/
+WARNING 2025-11-20 11:18:55,677 basehttp "POST /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/upload_proforma/ HTTP/1.1" 404 13124
+WARNING 2025-11-20 11:18:55,691 log Bad Request: /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/update_status/
+WARNING 2025-11-20 11:18:55,692 basehttp "POST /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/update_status/ HTTP/1.1" 400 99
+WARNING 2025-11-20 11:18:55,697 log Not Found: /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/upload_receipt/
+WARNING 2025-11-20 11:18:55,698 basehttp "POST /api/p2p/orders/a6e53ef2-270e-430a-bac2-ccc707106467/upload_receipt/ HTTP/1.1" 404 13121
+INFO 2025-11-20 11:19:21,658 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:19:22,868 autoreload Watching for file changes with StatReloader

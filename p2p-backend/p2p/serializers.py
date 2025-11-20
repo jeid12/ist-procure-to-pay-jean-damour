@@ -1,15 +1,22 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from drf_spectacular.utils import extend_schema_field
 from .models import PurchaseRequest, RequestItem, Approval, PurchaseOrder
 
 User = get_user_model()
 
-class UserSerializer(serializers.ModelSerializer):
-    full_name = serializers.ReadOnlyField()
+# Use a different name to avoid conflicts with users.serializers.UserSerializer
+class P2PUserSerializer(serializers.ModelSerializer):
+    full_name = serializers.SerializerMethodField()
+    
+    @extend_schema_field(serializers.CharField)
+    def get_full_name(self, obj):
+        return obj.full_name
     
     class Meta:
         model = User
         fields = ['id', 'email', 'first_name', 'last_name', 'full_name', 'role']
+        ref_name = 'P2PUser'  # Explicit reference name for OpenAPI
 
 class RequestItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,7 +25,7 @@ class RequestItemSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'total_price']
 
 class ApprovalSerializer(serializers.ModelSerializer):
-    approver_details = UserSerializer(source='approver', read_only=True)
+    approver_details = P2PUserSerializer(source='approver', read_only=True)
     level_display = serializers.CharField(source='get_level_display', read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
     
@@ -30,7 +37,7 @@ class ApprovalSerializer(serializers.ModelSerializer):
 
 class PurchaseRequestListSerializer(serializers.ModelSerializer):
     """Lightweight serializer for list views"""
-    requester_details = UserSerializer(source='requester', read_only=True)
+    requester_details = P2PUserSerializer(source='requester', read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
     has_proforma = serializers.SerializerMethodField()
     has_receipt = serializers.SerializerMethodField()
@@ -42,15 +49,17 @@ class PurchaseRequestListSerializer(serializers.ModelSerializer):
                   'created_at', 'updated_at']
         read_only_fields = ['id', 'requester', 'created_at', 'updated_at']
     
+    @extend_schema_field(serializers.BooleanField)
     def get_has_proforma(self, obj):
         return bool(obj.proforma_invoice)
     
+    @extend_schema_field(serializers.BooleanField)
     def get_has_receipt(self, obj):
         return bool(obj.receipt)
 
 class PurchaseRequestDetailSerializer(serializers.ModelSerializer):
     """Detailed serializer with nested relationships"""
-    requester_details = UserSerializer(source='requester', read_only=True)
+    requester_details = P2PUserSerializer(source='requester', read_only=True)
     items = RequestItemSerializer(many=True, required=False)
     approvals = ApprovalSerializer(many=True, read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
@@ -136,7 +145,7 @@ class ApprovalActionSerializer(serializers.Serializer):
 
 class PurchaseOrderSerializer(serializers.ModelSerializer):
     purchase_request_details = PurchaseRequestListSerializer(source='purchase_request', read_only=True)
-    created_by_details = UserSerializer(source='created_by', read_only=True)
+    created_by_details = P2PUserSerializer(source='created_by', read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
     
     class Meta:

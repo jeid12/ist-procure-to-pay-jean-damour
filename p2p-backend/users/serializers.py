@@ -1,11 +1,16 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
+from drf_spectacular.utils import extend_schema_field
 
 User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
-    full_name = serializers.ReadOnlyField()
+    full_name = serializers.SerializerMethodField()
+    
+    @extend_schema_field(serializers.CharField)
+    def get_full_name(self, obj):
+        return obj.full_name
     
     class Meta:
         model = User
