@@ -1,0 +1,424 @@
+{
+  "info": {
+    "name": "Procure-to-Pay API",
+    "description": "Complete API collection for the Procure-to-Pay system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refresh_token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"test123456\",\n  \"password2\": \"test123456\",\n  \"first_name\": \"Test\",\n  \"last_name\": \"User\",\n  \"role\": \"staff\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/register/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "register", ""]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "pm.collectionVariables.set(\"access_token\", jsonData.access);",
+                  "pm.collectionVariables.set(\"refresh_token\", jsonData.refresh);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"staff@test.com\",\n  \"password\": \"test123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login", ""]
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/token/refresh/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "token", "refresh", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/auth/me/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "me", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Purchase Requests",
+      "item": [
+        {
+          "name": "List Requests",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/?page=1&page_size=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ""],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "page_size",
+                  "value": "10"
+                },
+                {
+                  "key": "status",
+                  "value": "PENDING",
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": "office",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Office Equipment\",\n  \"description\": \"Purchase of new office equipment for the team\",\n  \"amount\": \"3500.00\",\n  \"items\": [\n    {\n      \"item_name\": \"Standing Desk\",\n      \"description\": \"Adjustable standing desk\",\n      \"quantity\": 5,\n      \"unit_price\": \"650.00\"\n    },\n    {\n      \"item_name\": \"Office Chair\",\n      \"description\": \"Ergonomic office chair\",\n      \"quantity\": 5,\n      \"unit_price\": \"350.00\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Request Details",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/:id/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ":id", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "request-uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Request",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Office Equipment\",\n  \"description\": \"Updated description\",\n  \"amount\": \"3800.00\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/:id/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ":id", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "request-uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Approve Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Approved - within budget and necessary for operations\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/:id/approve/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ":id", "approve", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "request-uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Reject Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Rejected - over budget\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/:id/reject/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ":id", "reject", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "request-uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Upload Proforma Invoice",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/:id/upload_proforma/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ":id", "upload_proforma", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "request-uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Upload Receipt",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/:id/upload_receipt/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", ":id", "upload_receipt", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "request-uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "My Requests (Staff)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/my_requests/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", "my_requests", ""]
+            }
+          }
+        },
+        {
+          "name": "Pending Requests (Approvers)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/p2p/requests/pending/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "requests", "pending", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Purchase Orders",
+      "item": [
+        {
+          "name": "List Purchase Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/p2p/orders/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "orders", ""]
+            }
+          }
+        },
+        {
+          "name": "Get PO Details",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/p2p/orders/:id/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "orders", ":id", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "po-uuid-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update PO Status (Finance)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"SENT\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/p2p/orders/:id/update_status/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "p2p", "orders", ":id", "update_status", ""],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "po-uuid-here"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
