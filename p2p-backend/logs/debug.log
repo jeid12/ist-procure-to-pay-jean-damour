@@ -831,3 +831,732 @@ INFO 2025-11-20 11:32:56,764 basehttp "POST /api/p2p/requests/9876e297-94bf-4ab2
 INFO 2025-11-20 11:33:11,424 basehttp "POST /api/p2p/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/upload_receipt/ HTTP/1.1" 200 1499
 WARNING 2025-11-20 11:35:04,634 log Forbidden: /api/p2p/orders/9876e297-94bf-4ab2-9f72-577e1bbd4657/update_status/
 WARNING 2025-11-20 11:35:04,635 basehttp "POST /api/p2p/orders/9876e297-94bf-4ab2-9f72-577e1bbd4657/update_status/ HTTP/1.1" 403 63
+INFO 2025-11-20 11:39:23,598 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 11:39:24,304 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:39:24,307 basehttp "GET /api/schema/ HTTP/1.1" 500 345113
+ERROR 2025-11-20 11:39:24,848 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:39:24,851 basehttp "GET /api/schema/ HTTP/1.1" 500 342353
+INFO 2025-11-20 11:39:26,910 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 11:39:27,561 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:39:27,564 basehttp "GET /api/schema/ HTTP/1.1" 500 345113
+ERROR 2025-11-20 11:39:28,107 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:39:28,109 basehttp "GET /api/schema/ HTTP/1.1" 500 345113
+INFO 2025-11-20 11:39:32,572 basehttp "GET /admin/ HTTP/1.1" 200 9488
+INFO 2025-11-20 11:39:32,592 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,596 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,599 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,602 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,603 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,604 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,642 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,650 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-11-20 11:39:32,651 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-11-20 11:41:23,109 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:41:24,340 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:41:45,398 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:41:46,337 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:42:00,819 autoreload /app/p2p/views.py changed, reloading.
+INFO 2025-11-20 11:42:01,867 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:42:41,908 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:42:43,106 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 11:42:43,803 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:42:43,805 basehttp "GET /api/schema/ HTTP/1.1" 500 345339
+ERROR 2025-11-20 11:42:44,368 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:42:44,372 basehttp "GET /api/schema/ HTTP/1.1" 500 345411
+INFO 2025-11-20 11:47:16,905 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:47:23,755 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 11:47:24,459 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:47:24,467 basehttp "GET /api/schema/ HTTP/1.1" 500 342579
+ERROR 2025-11-20 11:47:24,994 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:47:24,997 basehttp "GET /api/schema/ HTTP/1.1" 500 345171
+INFO 2025-11-20 11:47:58,149 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:47:59,205 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:48:48,602 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:48:49,583 autoreload Watching for file changes with StatReloader
+ERROR 2025-11-20 11:49:46,802 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/drf_spectacular/renderers.py", line 67, in render
+    return dump(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/__init__.py", line 253, in dump
+    return dump_all([data], stream, Dumper=Dumper, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/__init__.py", line 241, in dump_all
+    dumper.represent(data)
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 27, in represent
+    node = self.represent_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 58, in represent_data
+    node = self.yaml_representers[None](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 231, in represent_undefined
+    raise RepresenterError("cannot represent an object", data)
+yaml.representer.RepresenterError: ('cannot represent an object', <class 'users.serializers.UserSerializer'>)
+ERROR 2025-11-20 11:49:46,806 basehttp "GET /api/schema/ HTTP/1.1" 500 365126
+INFO 2025-11-20 11:50:28,247 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:50:29,322 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:50:39,534 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:50:40,572 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:51:29,861 basehttp "GET /api/docs/ HTTP/1.1" 200 4651
+ERROR 2025-11-20 11:51:30,545 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:51:30,550 basehttp "GET /api/schema/ HTTP/1.1" 500 342679
+ERROR 2025-11-20 11:51:31,071 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 7 more times]
+  File "/usr/local/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+ERROR 2025-11-20 11:51:31,075 basehttp "GET /api/schema/ HTTP/1.1" 500 345439
+ERROR 2025-11-20 11:51:43,515 log Internal Server Error: /api/schema/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/drf_spectacular/renderers.py", line 67, in render
+    return dump(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/__init__.py", line 253, in dump
+    return dump_all([data], stream, Dumper=Dumper, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/__init__.py", line 241, in dump_all
+    dumper.represent(data)
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 27, in represent
+    node = self.represent_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 58, in represent_data
+    node = self.yaml_representers[None](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/yaml/representer.py", line 231, in represent_undefined
+    raise RepresenterError("cannot represent an object", data)
+yaml.representer.RepresenterError: ('cannot represent an object', <class 'users.serializers.UserSerializer'>)
+ERROR 2025-11-20 11:51:43,517 basehttp "GET /api/schema/ HTTP/1.1" 500 365206
+INFO 2025-11-20 11:53:08,074 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:53:09,269 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:53:20,569 autoreload /app/core/settings.py changed, reloading.
+INFO 2025-11-20 11:53:21,529 autoreload Watching for file changes with StatReloader

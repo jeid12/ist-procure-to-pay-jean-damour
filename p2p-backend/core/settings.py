@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 from datetime import timedelta
 import os
@@ -46,6 +44,19 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     'COMPONENT_SPLIT_REQUEST': True,
     'SCHEMA_PATH_PREFIX': '/api',
+    'ENUM_NAME_OVERRIDES': {
+        'status': {
+            'PurchaseRequest': 'PurchaseRequestStatusEnum',
+            'PurchaseOrder': 'PurchaseOrderStatusEnum',
+        }
+    },
+}
+
+# Correct ENUM_NAME_OVERRIDES paths
+SPECTACULAR_SETTINGS['ENUM_NAME_OVERRIDES'] = {
+    'p2p.models.PurchaseRequest.status': 'PurchaseRequestStatusEnum',
+    'p2p.models.Approval.status': 'ApprovalStatusEnum',
+    'p2p.models.PurchaseOrder.status': 'PurchaseOrderStatusEnum',
 }
 
 # Configure REST framework

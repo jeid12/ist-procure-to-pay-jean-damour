@@ -668,6 +668,12 @@ class PurchaseOrderViewSet(viewsets.ReadOnlyModelViewSet):
                 'error': f'Status must be one of: {", ".join(dict(PurchaseOrder.STATUS_CHOICES).keys())}'
             }, status=status.HTTP_400_BAD_REQUEST)
         
+        if request.user.role != 'finance':
+            return Response({
+                'message': 'Permission denied',
+                'error': 'Only finance users can update the status of purchase orders.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
         po.status = new_status
         po.save()
         
