@@ -824,3 +824,10 @@ INFO 2025-11-20 11:31:19,893 autoreload Watching for file changes with StatReloa
 INFO 2025-11-20 11:31:34,274 autoreload /app/p2p/models.py changed, reloading.
 INFO 2025-11-20 11:31:35,243 autoreload Watching for file changes with StatReloader
 INFO 2025-11-20 11:32:52,304 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 11:32:56,755 document_processor Extracting text from image: /app/media/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/reci.png
+INFO 2025-11-20 11:32:56,757 document_processor Extracted data: {}
+INFO 2025-11-20 11:32:56,760 views Extracted data from proforma: {}
+INFO 2025-11-20 11:32:56,764 basehttp "POST /api/p2p/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/upload_proforma/ HTTP/1.1" 200 1441
+INFO 2025-11-20 11:33:11,424 basehttp "POST /api/p2p/requests/9876e297-94bf-4ab2-9f72-577e1bbd4657/upload_receipt/ HTTP/1.1" 200 1499
+WARNING 2025-11-20 11:35:04,634 log Forbidden: /api/p2p/orders/9876e297-94bf-4ab2-9f72-577e1bbd4657/update_status/
+WARNING 2025-11-20 11:35:04,635 basehttp "POST /api/p2p/orders/9876e297-94bf-4ab2-9f72-577e1bbd4657/update_status/ HTTP/1.1" 403 63
